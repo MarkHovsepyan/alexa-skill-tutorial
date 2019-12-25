@@ -1,0 +1,12 @@
+HelloIntent say hello to {FirstName}
+HelloIntent wish {FirstName}
+HelloIntent greet our guest {FirstName}
+HelloIntent wish our guest {FirstName}
+
+QuoteIntent get me a quote
+QuoteIntent get a quote
+QuoteIntent tell me a quote
+
+NextQuoteIntent more
+NextQuoteIntent one more
+NextQuoteIntent yes
