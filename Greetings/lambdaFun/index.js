@@ -178,7 +178,7 @@ function handleHelloIntent(request, context) {
     } else {
       options.speechText += quote;
       options.cardContent = quote;
-      options.imageUrl = "https://www.publicdomainpictures.net/pictures/290000/nahled/hello-text.jpg";
+      options.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a2/Hello_%28yellow%29.png";
       options.endSession = true;
       context.succeed(buildResponse(options));
     }
