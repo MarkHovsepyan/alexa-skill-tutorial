@@ -1,13 +1,14 @@
 'use strict'
 
-var http = require('http');
+var https = require('https');
 
 exports.handler = function(event, context) {
-  if ( process.env.NODE_DEBUG_EN ) {
-    console.log("Request:\n" + JSON.stringify(event, null, 2));
-  }
-
   try {
+
+    if ( process.env.NODE_DEBUG_EN ) {
+      console.log("Request:\n" + JSON.stringify(event, null, 2));
+    }
+
     var request = event.request;
     var session = event.session;
 
@@ -56,9 +57,9 @@ exports.handler = function(event, context) {
 }
 
 function getQuote(callback) {
-  var url = "http://api.forismatic.com/api/1.0/json?method=getQuote&lang=en&format=json";
+  var url = "https://api.quotable.io/random";
   
-  var req = http.get(url, function(res) {
+  var req = https.get(url, function(res) {
     var body = "";
 
     res.on('data', function(chunk) {
@@ -69,7 +70,7 @@ function getQuote(callback) {
       body = body.replace(/\\/g, '');
       var quote = JSON.parse(body);
       
-      callback(quote.quoteText);
+      callback(quote.content);
     });
 
   });
@@ -97,6 +98,7 @@ function getWish() {
 }
 
 function buildResponse(options) {
+
   if ( process.env.NODE_DEBUG_EN ) {
     console.log("buildResponse options:\n" + JSON.stringify(options, null, 2));
   }
